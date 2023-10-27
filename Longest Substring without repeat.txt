@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int left=0,right=0;
+        int lon=0;
+        vector<int> m(256,-1);
+        for(int i=right;i<s.size();i++)
+        {
+            if(m[s[right]]!=-1)
+            {
+                left=max(left,m[s[right]]+1);
+            }
+            m[s[right]]=right;
+            lon=max(lon,right-left+1);
+            right++;
+        }
+        return lon;
+    }
+};
